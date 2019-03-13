@@ -3,7 +3,8 @@ import './style.css'
 import Icon from './icon.png';
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import MovieList from './app.jsx';
+import MovieList from './MovieList.jsx';
+import MovieFilter from './MovieFilter.jsx';
 // import ReactDom from 'react-dom';
 // import React from 'react';
 // import App from 'app.jsx'
@@ -28,11 +29,11 @@ import MovieList from './app.jsx';
 
   // index.js
   var movies = [
-    {title: 'Mean Girls'},
-    {title: 'Hackers'},
-    {title: 'The Grey'},
-    {title: 'Sunshine'},
-    {title: 'Ex Machina'},
+    {title: 'Mean Girls', watched:true},
+    {title: 'Hackers', watched:true},
+    {title: 'The Grey', watched:true},
+    {title: 'Sunshine', watched:true},
+    {title: 'Ex Machina', watched:true},
   ];
 const styles = {
   app: {
@@ -48,7 +49,7 @@ class App extends Component {
       search:"",
       movieAdd:"",
       movies:props.movies,
-      viewingToWatch:true
+      displayingWatched:true
     }
 
   }
@@ -66,8 +67,11 @@ class App extends Component {
     this.setState({movies:newMovies})
   }
 
-  toggleToWatch(){
-    this.setState({viewingToWatch:!this.state.viewingToWatch});
+  turnOnDisplayingWatched(){
+    this.setState({displayingWatched:true});
+  }
+  turnOffDisplayingWatched(){
+    this.setState({displayingWatched:false});
   }
 
   render() {
@@ -76,9 +80,15 @@ class App extends Component {
         <div class="title">MovieList</div>
         <div><input type="text" onChange={this.updateMovieAdd.bind(this)}></input><button onClick={this.addMovie.bind(this)}>Add</button></div>
         <div class="content-container">
+          <MovieFilter 
+            viewingWatched={this.state.viewingWatched} 
+            onWatched={this.turnOnDisplayingWatched.bind(this)} 
+            offWatched={this.turnOffDisplayingWatched.bind(this)}
+            updateSearch={this.updateMovieAdd.bind(this)}
+            displayingWatched={this.state.displayingWatched}
+          />
 
-          <div><span class="select-tab active-tab">Watched</span><span class="select-tab">To watch</span><input type="text" onChange={this.updateSearch.bind(this)}></input><button>Go!</button></div>
-          <MovieList movies={this.state.movies} search={this.state.search} dislayWatched={false}/>
+          <MovieList movies={this.state.movies} search={this.state.search} displayingWatched={this.state.displayingWatched}/>
         </div>
       </div>
     )

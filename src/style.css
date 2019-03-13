@@ -44,3 +44,8 @@ body {
     padding-bottom: 20px;
 }
 
+.right-justify {
+    text-align: right;
+    padding: 10px;
+}
+
