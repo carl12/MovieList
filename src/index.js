@@ -48,6 +48,7 @@ class App extends Component {
       search:"",
       movieAdd:"",
       movies:props.movies,
+      viewingToWatch:true
     }
 
   }
@@ -65,14 +66,19 @@ class App extends Component {
     this.setState({movies:newMovies})
   }
 
+  toggleToWatch(){
+    this.setState({viewingToWatch:!this.state.viewingToWatch});
+  }
+
   render() {
     return (
       <div style={styles.app} >
         <div class="title">MovieList</div>
         <div><input type="text" onChange={this.updateMovieAdd.bind(this)}></input><button onClick={this.addMovie.bind(this)}>Add</button></div>
-        <div><input type="text" onChange={this.updateSearch.bind(this)}></input><button>Go!</button></div>
         <div class="content-container">
-          <MovieList movies={this.state.movies} search={this.state.search}/>
+
+          <div><span class="select-tab active-tab">Watched</span><span class="select-tab">To watch</span><input type="text" onChange={this.updateSearch.bind(this)}></input><button>Go!</button></div>
+          <MovieList movies={this.state.movies} search={this.state.search} dislayWatched={false}/>
         </div>
       </div>
     )
