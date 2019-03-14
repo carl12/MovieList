@@ -84,7 +84,7 @@ class App extends Component {
             viewingWatched={this.state.viewingWatched} 
             onWatched={this.turnOnDisplayingWatched.bind(this)} 
             offWatched={this.turnOffDisplayingWatched.bind(this)}
-            updateSearch={this.updateMovieAdd.bind(this)}
+            updateSearch={this.updateSearch.bind(this)}
             displayingWatched={this.state.displayingWatched}
           />
 
