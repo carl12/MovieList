@@ -29,11 +29,11 @@ import MovieFilter from './MovieFilter.jsx';
 
   // index.js
   var movies = [
-    {title: 'Mean Girls', watched:true},
-    {title: 'Hackers', watched:true},
-    {title: 'The Grey', watched:true},
-    {title: 'Sunshine', watched:true},
-    {title: 'Ex Machina', watched:true},
+    {title: 'Mean Girls', watched:false},
+    {title: 'Hackers', watched:false},
+    {title: 'The Grey', watched:false},
+    {title: 'Sunshine', watched:false},
+    {title: 'Ex Machina', watched:false},
   ];
 const styles = {
   app: {
@@ -49,7 +49,7 @@ class App extends Component {
       search:"",
       movieAdd:"",
       movies:props.movies,
-      displayingWatched:true
+      displayingWatched:false
     }
 
   }
@@ -63,7 +63,7 @@ class App extends Component {
 
   addMovie() {
     var newMovies = this.state.movies.slice();
-    newMovies.push({title:this.state.movieAdd});
+    newMovies.push({title:this.state.movieAdd, watched:false});
     this.setState({movies:newMovies})
   }
 
