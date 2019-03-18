@@ -51,6 +51,7 @@ class App extends Component {
       movies: props.movies,
       displayingWatched: false
     }
+    // getServerData().then(json=>this.setState({movies:json}));
 
   }
   updateSearch(q) {
@@ -93,6 +94,19 @@ class App extends Component {
       </div>
     )
   }
+}
+
+var getServerData = function (title) {
+  var url = `http://localhost:3000`
+
+  return fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .catch(err => console.log(err));
 }
 
 const root = document.querySelector('#app')

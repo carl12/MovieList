@@ -11,13 +11,10 @@ var movies = [
     {title:'2001: A Space Odessy', watched:false},
 ]
 app.use(cors());
-app.use('/', (req, res, next) => {
-    console.log('asdf')
-    next();
-});
+
 app.get('/', (req, res) => {
-    console.log('request')
-    res.end('hello World!')
+    res.send(JSON.stringify(movies));
+    res.end();
     // res.send(JSON.stringify(movies));
 });
 app.listen(port, ()=>{console.log('running!')});

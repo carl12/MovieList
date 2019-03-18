@@ -21,7 +21,6 @@ class MovieEntry extends Component {
     this.setState({ tryingToOpen: !this.state.tryingToOpen });
     if (!this.state.loaded) {
       getMovieData(this.props.movie.title).then((data) => {
-        console.log(data)
 
         this.setState({ loaded: true, info: data, failedLoad: false })
       }).catch((err) => {
@@ -78,4 +77,6 @@ var getMovieData = function (title) {
   }).then(res => res.json())
     .then(response => response.results[0]);
 }
+
+
 export default MovieEntry;
