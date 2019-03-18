@@ -1,10 +1,33 @@
 import _ from 'lodash';
 import './style.css'
+import Icon from './icon.png';
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import MovieList from './MovieList.jsx';
 import MovieFilter from './MovieFilter.jsx';
+// import ReactDom from 'react-dom';
+// import React from 'react';
+// import App from 'app.jsx'
 
+// import App from 'app.jsx';
+
+// function component() {
+//     let element = document.createElement('div');
+
+//     // Lodash, currently included via a script, is required for this line to work
+//     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+//     element.classList.add('hello');
+//     var myIcon = new Image();
+//     myIcon.src = Icon;
+//     element.appendChild(myIcon);
+//     console.log('asdf1')
+
+//     return element;
+//   }
+//   console.log('asdf');
+//   document.body.appendChild(component());
+
+  // index.js
   var movies = [
     {title: 'Mean Girls', watched:false},
     {title: 'Hackers', watched:false},
@@ -71,14 +94,6 @@ class App extends Component {
     )
   }
 }
-console.log('asdf')
+
 const root = document.querySelector('#app')
-var loadFromServer = function(){
-  console.log('asdf')
-  fetch('localhost:3000',{
-    method: 'GET', 
-    headers:{ 'Content-Type': 'application/json' }
-  }).then((a)=>{console.log(a.body)}).catch((e)=>{console.log(e)});
-}
-loadFromServer();
 ReactDOM.render(<App movies={movies}/>, root)

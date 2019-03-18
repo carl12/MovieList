@@ -27,8 +27,9 @@ class MovieEntry extends Component {
                     rating:data.vote_average,
                 };
                    
-                this.setState({loaded:true, info:data, failedLoad:false})
+                this.setState({loaded:true, info:packagedData, failedLoad:false})
             }).catch((err) => {
+                console.log('failed to load');
                 this.setState({failedLoad:true});
 
             });
@@ -44,25 +45,22 @@ class MovieEntry extends Component {
                     </div>);
         var end = "";
         if (this.state.tryingToOpen && this.state.loaded) {
-            end = (
-                <div><div>Title: {this.state.info.title}</div>
-                <div>Release: {this.state.info.release_date}</div>
-                <div>Popularity: {this.state.info.popularity}</div>
-                <div>Rating: {this.state.info.vote_average}</div></div>);
+            end = (<div><div>Year:{this.state.info.year}</div>
+                <div>Popularity:{this.state.info.popularity}</div>
+                <div>Rating:{this.state.info.rating}</div></div>);
         } else if (this.state.failedLoad && this.state.tryingToOpen) {
             end = (<div>Failed to load</div>)
-        } else if (this.state.tryingToOpen) {
-            end = (<div>Loading...</div>)
-        }
+        } 
         return <div>{start} {end}</div>; 
     } 
 }
 var getMovieData = function(title) {
     title = title.replace(' ', '%20');
-    var url  = `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${title}&page=1&include_adult=false`;
+    var url  = `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${title}&page=1&include_adult=false`
+    var data = {username: 'example'};
     
     return fetch(url, {
-      method: 'GET', 
+      method: 'POST', 
       headers:{
         'Content-Type': 'application/json'
       }

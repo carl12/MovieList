@@ -5,8 +5,8 @@ var MovieFilter = ({onWatched, offWatched, updateSearch, displayingWatched})=>{
     var toWatchClass = "select-tab" + (!displayingWatched? " active-tab":"");
     return (
     <div>
-        <span class={toWatchClass} onClick={offWatched}>To watch</span>
         <span class={watchClass} onClick={onWatched}>Watched</span>
+        <span class={toWatchClass} onClick={offWatched}>To watch</span>
         <input type="text" onChange={updateSearch}></input>
     </div>
     );
