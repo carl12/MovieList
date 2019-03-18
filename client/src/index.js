@@ -27,14 +27,14 @@ import MovieFilter from './MovieFilter.jsx';
 //   console.log('asdf');
 //   document.body.appendChild(component());
 
-  // index.js
-  var movies = [
-    {title: 'Mean Girls', watched:false},
-    {title: 'Hackers', watched:false},
-    {title: 'The Grey', watched:false},
-    {title: 'Sunshine', watched:false},
-    {title: 'Ex Machina', watched:false},
-  ];
+// index.js
+var movies = [
+  { title: 'Mean Girls', watched: false },
+  { title: 'Hackers', watched: false },
+  { title: 'The Grey', watched: false },
+  { title: 'Sunshine', watched: false },
+  { title: 'Ex Machina', watched: false },
+];
 const styles = {
   app: {
     // paddingTop: 40,
@@ -43,35 +43,35 @@ const styles = {
 }
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      search:"",
-      movieAdd:"",
-      movies:props.movies,
-      displayingWatched:false
+      search: "",
+      movieAdd: "",
+      movies: props.movies,
+      displayingWatched: false
     }
 
   }
-  updateSearch(q){
+  updateSearch(q) {
     // console.log(q.target.value);
-    this.setState({search:q.target.value});
+    this.setState({ search: q.target.value });
   }
   updateMovieAdd(q) {
-    this.setState({movieAdd:q.target.value})
+    this.setState({ movieAdd: q.target.value })
   }
 
   addMovie() {
     var newMovies = this.state.movies.slice();
-    newMovies.push({title:this.state.movieAdd, watched:false});
-    this.setState({movies:newMovies})
+    newMovies.push({ title: this.state.movieAdd, watched: false });
+    this.setState({ movies: newMovies })
   }
 
-  turnOnDisplayingWatched(){
-    this.setState({displayingWatched:true});
+  turnOnDisplayingWatched() {
+    this.setState({ displayingWatched: true });
   }
-  turnOffDisplayingWatched(){
-    this.setState({displayingWatched:false});
+  turnOffDisplayingWatched() {
+    this.setState({ displayingWatched: false });
   }
 
   render() {
@@ -80,15 +80,15 @@ class App extends Component {
         <div class="title">MovieList</div>
         <div><input type="text" onChange={this.updateMovieAdd.bind(this)}></input><button onClick={this.addMovie.bind(this)}>Add</button></div>
         <div class="content-container">
-          <MovieFilter 
-            viewingWatched={this.state.viewingWatched} 
-            onWatched={this.turnOnDisplayingWatched.bind(this)} 
+          <MovieFilter
+            viewingWatched={this.state.viewingWatched}
+            onWatched={this.turnOnDisplayingWatched.bind(this)}
             offWatched={this.turnOffDisplayingWatched.bind(this)}
             updateSearch={this.updateSearch.bind(this)}
             displayingWatched={this.state.displayingWatched}
           />
 
-          <MovieList movies={this.state.movies} search={this.state.search} displayingWatched={this.state.displayingWatched}/>
+          <MovieList movies={this.state.movies} search={this.state.search} displayingWatched={this.state.displayingWatched} />
         </div>
       </div>
     )
@@ -96,4 +96,4 @@ class App extends Component {
 }
 
 const root = document.querySelector('#app')
-ReactDOM.render(<App movies={movies}/>, root)
+ReactDOM.render(<App movies={movies} />, root)

@@ -44,6 +44,22 @@ body {
     padding-bottom: 20px;
 }
 
+.info-container {
+  width: 79%;
+  float:left;
+}
+
+.image-container {
+  clear:both;
+}
+
+.movie-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
 .right-justify {
     text-align: right;
     padding: 10px;
