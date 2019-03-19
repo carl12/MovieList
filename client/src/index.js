@@ -51,7 +51,7 @@ class App extends Component {
       movies: props.movies,
       displayingWatched: false
     }
-    // getServerData().then(json=>this.setState({movies:json}));
+    getServerData().then(json=>this.setState({movies:json}));
 
   }
   updateSearch(q) {
